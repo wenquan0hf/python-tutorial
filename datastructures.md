@@ -11,4 +11,4 @@ list.append(x)
 ```
 list.extend(L)
 ```
-将L中的全部元素插入到列表的末尾，以扩展该列表. 等同于```Equivalent to a[len(a):] = L.```
+将L中的全部元素插入到列表的末尾，以扩展该列表. 等同于```a[len(a):] = L.```
