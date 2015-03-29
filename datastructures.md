@@ -246,7 +246,9 @@ SyntaxError: invalid syntax
 >>> a
 []
 ```
-```del```语句也可被用于删除整个变量：
+
+del语句也可被用于删除整个变量：
+
 ```
 >>> del a
 ```
