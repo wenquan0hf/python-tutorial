@@ -1,7 +1,7 @@
 - [待添加翻译 - Whetting Your Appetite](appetite.md)
 - [待添加翻译 - 使用Python解释器](interpreter.md)
 - [待添加翻译 - 关于Python的一个非正式介绍](introduction.md)
-- [待添加翻译 - 更多控制流的工具](controlflow.md)
+- [待添加翻译 - 更多控制流的工具](controlflow.md)//没有翻译
 - [待添加翻译 - 数据结构](datastructures.md)
 - [待添加翻译 - 模块](modules.md)
 - [待添加翻译 - 输入和输出](inputoutput.md)
