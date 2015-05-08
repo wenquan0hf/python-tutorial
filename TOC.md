@@ -10,9 +10,9 @@
  - [类](classes.md)
  - [速览标准库](stdlib.md)
  - [速览标准库II](stdlib2.md)
- - [What Now?](whatnow.md)
- - [Interactive Input Editing and History Substitution](interactive.md)
- - [浮点运算: Issues and Limitations](floatingpoint.md)
+ - [What now?](whatnow.md)
+ - [交互输入编辑和历史回溯](interactive.md)
+ - [浮点运算](floatingpoint.md)
  - [附录](appendix.md)
 
 
