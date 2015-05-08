@@ -1,8 +1,8 @@
-# 10. 标准库概览
+# 速览标准库
 
-## 10.1. 操作系统接口
+## 操作系统接口
 
-os 模块提供了很多与操作系统交互的函数:
+os 模块提供了很多与操作系统交互的函数：
 
 ```
 >>> import os  
@@ -11,12 +11,11 @@ os 模块提供了很多与操作系统交互的函数:
 >>> os.chdir('/server/accesslogs')   # Change current working directory  
 >>> os.system('mkdir today')   # Run the command mkdir in the system  
 shell0  
-
 ```
 
 应该用 `import os` 风格而非 `from os import *`。这样可以保证随操作系统不同而有所变化的 `os.open()` 不会覆盖内置函数 `open()`
 
-在使用一些像 `os` 这样的大型模块时内置的 `dir()` 和 `help()` 函数非常有用:
+在使用一些像 `os` 这样的大型模块时内置的 `dir()` 和 `help()` 函数非常有用：
 
 ```
 >>> import os  
@@ -24,10 +23,9 @@ shell0
 <returns a list of all module functions>  
 >>> help(os)  
 <returns an extensive manual page created from the module's docstrings>  
-
 ```
 
-针对日常的文件和目录管理任务，shutil模块提供了一个易于使用的高级接口:
+针对日常的文件和目录管理任务，shutil模块提供了一个易于使用的高级接口：
 
 ```
 >>> import shutil  
@@ -38,13 +36,13 @@ shell0
 
 ```
 
-## 10.2. 文件通配符
+## 文件通配符
 
-`glob` 模块提供了一个函数用于从目录通配符搜索中生成文件列表:
+`glob` 模块提供了一个函数用于从目录通配符搜索中生成文件列表：
 
-## 10.2. 文件通配符
+## 文件通配符
 
-`glob` 模块提供了一个函数用于从目录通配符搜索中生成文件列表:
+`glob` 模块提供了一个函数用于从目录通配符搜索中生成文件列表：
 
 ```
 >>> import glob  
@@ -53,34 +51,32 @@ shell0
 
 ```
 
-## 10.3. 命令行参数
+## 命令行参数
 
 
-通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于sys 模块的 `argv` 变量。例如在命令行中执行 `python demo.py one two three` 后可以得到以下输出结果:
+通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于sys 模块的 `argv` 变量。例如在命令行中执行 `python demo.py one two three` 后可以得到以下输出结果：
 
 ```
 >>> import sys  
 >>> print(sys.argv)  
 ['demo.py', 'one', 'two', 'three']  
-
 ```
 
 `getopt` 模块使用 `Unix getopt()` 函处理 `sys.argv` 。更多的复杂命令行处理由`argparse` 模块提供。
 
-## 10.4. 错误输出重定向和程序终止
+## 错误输出重定向和程序终止
 
-`sys` 还有 `stdin`，`stdout` 和 `stderr` 属性,即使在 `stdout` 被重定向时，后者也可以用于显示警告和错误信息:
+`sys` 还有 `stdin`，`stdout` 和 `stderr` 属性,即使在 `stdout` 被重定向时，后者也可以用于显示警告和错误信息：
 
 ```
 >>> sys.stderr.write('Warning, log file not found starting a new one\n')  Warning, log file not found starting a new one  
-
 ```
 
 大多脚本的定向终止都使用 `sys.exit()`。
 
-## 10.5. 字符串正则匹配
+## 字符串正则匹配
 
-`re` 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案:
+`re` 模块为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案：
 
 ```
 >>> import re  
@@ -88,33 +84,28 @@ shell0
 ['foot', 'fell', 'fastest']  
 >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat') 
 'cat in the hat'  
-
 ```
 
-只需简单的操作时，字符串方法最好用，因为它们易读，又容易调试:
+只需简单的操作时，字符串方法最好用，因为它们易读，又容易调试：
 
 ```
-
 >>> 'tea for too'.replace('too', 'two')  
 'tea for two'  
-
 ```
 
-## 10.6. 数学
+## 数学
 
-`math` 模块为浮点运算提供了对底层 `C`函数库的访问:
+`math` 模块为浮点运算提供了对底层 `C`函数库的访问：
 
 ```
-
 >>> import math
 >>> math.cos(math.pi / 4)
 0.70710678118654757
 >>> math.log(1024, 2)
 10.0
-
 ```
 
-`random` 提供了生成随机数的工具:
+`random` 提供了生成随机数的工具：
 
 ```
 >>> import random  
@@ -125,12 +116,11 @@ shell0
 >>> random.random()    # random float0.17970987693706186  
 >>> random.randrange(6)     # random integer chosen from range(6)  
 4  
-
 ```
 
 `SciPy <http://scipy.org>` 项目提供了许多数值计算的模块。
 
-## 10.7. 互联网访问
+## 互联网访问
 
 有几个模块用于访问互联网以及处理网络通信协议。其中最简单的两个是用于处理从 `urls` 接收的数据的 `urllib.request` 以及用于发送电子邮件的 `smtplib`:
 
@@ -148,12 +138,11 @@ shell0
 ... Beware the Ides of March  
 .... """)  
 >>> server.quit()  
-
 ```
 
 (注意第二个例子需要在 `localhost` 运行一个邮件服务器。)
 
-## 10.8. 日期和时间
+## 日期和时间
 
 `datetime` 模块为日期和时间处理同时提供了简单和复杂的方法。支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。该模块还支持时区处理。
 
@@ -171,7 +160,7 @@ shell0
 
 ```
 
-## 10.9. 数据压缩
+## 数据压缩
 
 以下模块直接支持通用的数据打包和压缩格式：`zlib`,`gzip`,`bz2`,`zipfile`以及 `tarfile`。
 
@@ -190,11 +179,11 @@ b'witch which has which witches wrist watch'
 
 ```
 
-## 10.10. 性能度量
+## 性能度量
 
 有些用户对了解解决同一问题的不同方法之间的性能差异很感兴趣。Python 提供了一个度量工具，为这些问题提供了直接答案。
 
-例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。`timeit` 证明了后者更快一些:
+例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多。`timeit` 证明了后者更快一些：
 
 ```
 >>> from timeit import Timer  
@@ -202,16 +191,15 @@ b'witch which has which witches wrist watch'
 0.57535828626024577  
 >>> Timer('a,b = b,a', 'a=1; b=2').timeit()  
 0.54962537085770791  
-
 ```
 
 相对于 `timeit` 的细粒度，`profile`和 `pstats` 模块提供了针对更大代码块的时间度量工具。
 
-## 10.11. 质量控制
+## 质量控制
 
 开发高质量软件的方法之一是为每一个函数开发测试代码，并且在开发过程中经常进行测试。
 
-`doctest` 模块提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。通过用户提供的例子，它发展了文档，允许 `doctest` 模块确认代码的结果是否与文档一致:
+`doctest` 模块提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。通过用户提供的例子，它发展了文档，允许 `doctest` 模块确认代码的结果是否与文档一致：
 
 ```
     Def average(values):  
@@ -229,10 +217,9 @@ b'witch which has which witches wrist watch'
 import doctest 
 
 doctest.testmod()   # automatically validate the embedded tests
-
 ```
 
-`unittest` 模块不像 `doctest` 模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集:
+`unittest` 模块不像 `doctest` 模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集：
 
 ```
 Import unittest  
@@ -253,25 +240,18 @@ class TestStatisticalFunctions(unittest.TestCase):
 
               average(20, 30, 70)  
 unittest.main() # Calling from the command line invokes all tests 
-
 ```
 
-## 10.12. “瑞士军刀”
+## “瑞士军刀”
 
-Python 展现了“瑞士军刀”的哲学。 这可以通过它更大的包的高级和健壮的功能来得到最好的展现。 列如:
+Python 展现了“瑞士军刀”的哲学。 这可以通过它更大的包的高级和健壮的功能来得到最好的展现。 列如：
 
-*` xmlrpc.client` 和 `xmlrpc.server` 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有 XML 的知识或处理 XML。
+- xmlrpc.client` 和 `xmlrpc.server` 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有 XML 的知识或处理 XML。
 
-* email 包是一个管理邮件信息的库，包括MIME和其它基于 RFC 2822 的信息文档。不同于实际发送和接收信息的 `mtplib` 和 `poplib` 模块，email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。
+- email 包是一个管理邮件信息的库，包括MIME和其它基于 RFC 2822 的信息文档。不同于实际发送和接收信息的 `mtplib` 和 `poplib` 模块，email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。
 
-* xml.dom 和 xml.sax 包为流行的信息交换格式提供了强大的支持。同样， `csv` 模块支持在通用数据库格式中直接读写。综合起来，这些模块和包大大简化了 Python 应用程序和其它工具之间的数据交换。
+- xml.dom 和 xml.sax 包为流行的信息交换格式提供了强大的支持。同样， `csv` 模块支持在通用数据库格式中直接读写。综合起来，这些模块和包大大简化了 Python 应用程序和其它工具之间的数据交换。
 
-* 国际化由 gettext ，locale和codecs 包支持。
+- 国际化由 gettext ，locale和codecs 包支持。
 
-
->
-撰写时请删除此段
-
-原文地址：  
-https://docs.python.org/3/tutorial/stdlib.html
 
