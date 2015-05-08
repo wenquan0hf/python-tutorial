@@ -38,7 +38,8 @@ pprint 模块给老手提供了一种解释器可读的方式深入控制内置
 ...  
 >>> print(textwrap.fill(doc, width=40))  
 The wrap() method is just like fill()  
-except that it returns a list of stringsinstead of one big string with   newlinesto separate the wrapped lines.     
+except that it returns a list of stringsinstead of one big string with   
+newlinesto separate the wrapped lines.     
 ```
 
 `locale` 模块按访问预定好的国家信息数据库。`locale` 的格式化函数属性集提供了一个直接方式以分组标示格式化数字：
@@ -191,7 +192,8 @@ Python 自动进行内存管理（对大多数的对象进行引用计数和垃�
 >>> d['primary']                # fetch the object if it is still alive10  
 >>> del a                        # remove the one reference  
 >>> gc.collect()                   # run garbage collection right away0  
->>> d['primary']                  # entry was automatically removedTraceback  (most recent call last):  File "<stdin>", line 1, in <module>    
+>>> d['primary']                  # entry was automatically removedTraceback  (most recent call last): 
+                                                      File "<stdin>", line 1, in <module>    
      d['primary']                  # entry was automatically removed  
   File "C:/python34/lib/weakref.py", line 46, in __getitem__  
 O = self.data[key]()  
