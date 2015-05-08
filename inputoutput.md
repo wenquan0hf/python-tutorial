@@ -111,7 +111,7 @@ This spam is absolutely horrible.
 定位和关键字参数可以组合使用:  
 
 ```
->>> print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred',                                                                   other='Georg'))  
+>>> print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred',other='Geory'))                                    
 The story of Bill, Manfred, and Georg.  
 ```
 
@@ -155,8 +155,6 @@ Jack: 4098; Sjoerd: 4127; Dcab: 8637678
 
 这种方式与新的内置函数 `vars()` 组合使用非常有效。该函数返回包含所有局部变量的字典。
 
-要进一步了解字符串格式化方法 `str.format()` ，参见 [formatstrings]() 。
-
 ### 旧式的字符串格式化
 
 操作符 % 也可以用于字符串格式化。它以类似 `sprintf()-style` 的方式解析左参数，将右参数应用于此，得到格式化操作生成的字符串，例如:
@@ -166,8 +164,6 @@ Jack: 4098; Sjoerd: 4127; Dcab: 8637678
 >>> print('The value of PI is approximately %5.3f.' % math.pi)  
 The value of PI is approximately 3.142.  
 ```
-
-进一步的信息可以参见　[string-formatting]() 一节。
 
 ## 文件读写
 
@@ -196,7 +192,7 @@ This is the entire file.\n'
 ''  
 ```
 
-`f.readline()` 从文件中读取单独一行，字符串结尾会自动加上一个换行符（ `\n `），只有当文件最后一行没有以换行符结尾时，这一操作才会被忽略。这样返回值就不会有混淆，如果如果 `f.readline()` 返回一个空字符串，那就表示到达了文件末尾，如果是一个空行，就会描述为`'\n' `，一个只包含换行符的字符串。
+`f.readline()` 从文件中读取单独一行，字符串结尾会自动加上一个换行符（ `\n `），只有当文件最后一行没有以换行符结尾时，这一操作才会被忽略。这样返回值就不会有混淆，如果 `f.readline()` 返回一个空字符串，那就表示到达了文件末尾，如果是一个空行，就会描述为`'\n' `，一个只包含换行符的字符串。
 
 ```
 >>> f.readline()  
@@ -208,7 +204,7 @@ This is the entire file.\n'
 ''  
 ```
 
-对于从文件读取行,可以遍历文件对象。这是内存高效、快速和导致简单的代码:
+对于从文件读取行,可以遍历文件对象。这是内存高效、快速和导致简单的代码。
 
 ```
 >>> for line in f  
@@ -216,7 +212,7 @@ This is the entire file.\n'
 ...This is the first line of the file.Second line of the file  
 ```
 
-如果你想阅读列表中的所有行的文件，你还可以使用列表(`f`)或`f.readlines()`。
+如果你想阅读列表中的所有行的文件，你还可以使用列表`list(f)`或`f.readlines()`。
 
 `f.write(string)` 将字符串的内容写入文件,返回字符数。
 
@@ -230,12 +226,13 @@ This is the entire file.\n'
 ```
 >>> value = ('the answer', 42)  
 >>> s = str(value)  
->>> f.write(s)18   
+>>> f.write(s)
+18   
 ```
 
 `f.tell()` 返回一个整数，代表文件对象在文件中的指针位置，在文本模式下，该数值计量了自文件开头到指针处的比特数。
 
-需要改变文件对象指针话话，使用 `f.seek(offset,from_what)` 。指针在该操作中从指定的引用位置移动 offset 比特，引用位置由 `from_what` 参数指定。 `from_what` 值为 0 表示自文件起始处开始，1 表示自当前文件指针位置开始，2 表示自文件末尾开始。 `from_what` 可以忽略，其默认值为零，此时从文件头开始。  
+需要改变文件对象指针的话，使用 `f.seek(offset,from_what)`。指针在该操作中从指定的引用位置移动 offset 比特，引用位置由 `from_what` 参数指定。 `from_what` 值为 0 表示自文件起始处开始，1 表示自当前文件指针位置开始，2 表示自文件末尾开始。 `from_what` 可以忽略，其默认值为零，此时从文件头开始。  
 
 ```
 >>> f = open('workfile', 'rb+')  
@@ -289,22 +286,21 @@ True
 '[1, "simple", "list"]'  
 ```
 
-另一个变体转储函数,称为 dump(),可以将对象序列化到一个文本文件。所以如果f是一个写模式打开的文本文件对象，我们可以这样做:
+另一个变体转储函数，称为 dump()，可以将对象序列化到一个文本文件。所以如果f是一个写模式打开的文本文件对象，我们可以这样做:
 
 ```
 json.dump(x, f)
 ```
 
-
-第二次解码,如果f是一个读模式打开的文本文件对象:
+第二次解码，如果 f 是一个读模式打开的文本文件对象:
 
 ```
 x = json.load(f)
 ```
 
-这个简单的序列化技术可以处理列表和字典,但在 JSON 序列化任意类实例需要一点额外的努力。json的参考模块包含一个解释。
+这个简单的序列化技术可以处理列表和字典，但在 JSON 序列化任意类实例需要一点额外的努力。json的参考模块包含一个解释。
 
-参见 pickle,pickle 模块
-与 JSON 相反,pickle 是一个协议,允许序列化任意复杂的 Python 对象。因此,它是特定于 Python 和不能用于与其他语言编写的应用程序通信。也是不安全的默认:如果数据被老练的攻击者攻击，来自一个不可信的源的 pickle 数据可以执行任意代码。
+参见 pickle，pickle 模块
+与 JSON 相反，pickle 是一个协议，允许序列化任意复杂的 Python 对象。因此，它是特定于 Python 和不能用于与其他语言编写的应用程序通信。也是不安全的默认，如果数据被老练的攻击者攻击，来自一个不可信的源的 pickle 数据可以执行任意代码。
 
 
