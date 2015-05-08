@@ -307,9 +307,4 @@ x = json.load(f)
 参见 pickle,pickle 模块
 与 JSON 相反,pickle 是一个协议,允许序列化任意复杂的 Python 对象。因此,它是特定于 Python 和不能用于与其他语言编写的应用程序通信。也是不安全的默认:如果数据被老练的攻击者攻击，来自一个不可信的源的 pickle 数据可以执行任意代码。
 
->
-撰写时请删除此段
-
-原文地址：  
-https://docs.python.org/3/tutorial/inputoutput.html
 
