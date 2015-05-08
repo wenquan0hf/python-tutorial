@@ -2,7 +2,7 @@
  - [开门篇](appetite.md)
  - [使用Python解释器](interpreter.md)
  - [非正式的 Python 简介](introduction.md)
- - [更多控制流的工具](controlflow.md)//没有翻译
+ - [更多控制流的工具](controlflow.md)
  - [数据结构](datastructures.md)
  - [模块](modules.md)
  - [输入和输出](inputoutput.md)
