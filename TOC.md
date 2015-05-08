@@ -1,7 +1,7 @@
 - Python 指南
  - [开门篇](appetite.md)
  - [使用Python解释器](interpreter.md)
- - [关于Python的一个非正式介绍](introduction.md)
+ - [非正式的 Python 简介](introduction.md)
  - [更多控制流的工具](controlflow.md)//没有翻译
  - [数据结构](datastructures.md)
  - [模块](modules.md)
