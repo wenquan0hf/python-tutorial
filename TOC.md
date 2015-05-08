@@ -9,7 +9,7 @@
  - [错误与异常](errors.md)
  - [类](classes.md)
  - [速览标准库](stdlib.md)
- - [速览标准库II](stdlib2.md)
+ - [速览标准库Ⅱ](stdlib2.md)
  - [What now?](whatnow.md)
  - [交互输入编辑和历史回溯](interactive.md)
  - [浮点运算](floatingpoint.md)
