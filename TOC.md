@@ -6,7 +6,7 @@
  - [数据结构](datastructures.md)
  - [模块](modules.md)
  - [输入和输出](inputoutput.md)
- - [异常处理](errors.md)
+ - [错误与异常](errors.md)
  - [类](classes.md)
  - [速览标准库](stdlib.md)
  - [速览标准库II](stdlib2.md)
