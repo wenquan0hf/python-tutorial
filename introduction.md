@@ -48,7 +48,7 @@ Text = "# This is not a comment because it's inside quotes."
 17  
 ```
 
-在 Python 中，可以使用`* *`运算符来计算[1]:
+在 Python 中，可以使用`**`运算符来计算**脚注[1]**:
 
 ```
 >>> 5 ** 2  # 5 squared  
