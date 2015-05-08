@@ -69,7 +69,8 @@ shell0
 `sys` 还有 `stdin`，`stdout` 和 `stderr` 属性,即使在 `stdout` 被重定向时，后者也可以用于显示警告和错误信息：
 
 ```
->>> sys.stderr.write('Warning, log file not found starting a new one\n')  Warning, log file not found starting a new one  
+>>> sys.stderr.write('Warning, log file not found starting a new one\n') 
+Warning, log file not found starting a new one  
 ```
 
 大多脚本的定向终止都使用 `sys.exit()`。
@@ -247,11 +248,8 @@ unittest.main() # Calling from the command line invokes all tests
 Python 展现了“瑞士军刀”的哲学。 这可以通过它更大的包的高级和健壮的功能来得到最好的展现。 列如：
 
 - xmlrpc.client` 和 `xmlrpc.server` 模块让远程过程调用变得轻而易举。 尽管模块有这样的名字，用户无需拥有 XML 的知识或处理 XML。
-
 - email 包是一个管理邮件信息的库，包括MIME和其它基于 RFC 2822 的信息文档。不同于实际发送和接收信息的 `mtplib` 和 `poplib` 模块，email 包包含一个构造或解析复杂消息结构（包括附件）及实现互联网编码和头协议的完整工具集。
-
 - xml.dom 和 xml.sax 包为流行的信息交换格式提供了强大的支持。同样， `csv` 模块支持在通用数据库格式中直接读写。综合起来，这些模块和包大大简化了 Python 应用程序和其它工具之间的数据交换。
-
 - 国际化由 gettext ，locale和codecs 包支持。
 
 
