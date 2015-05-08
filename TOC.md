@@ -1,5 +1,5 @@
 - Python 指南
- - [Whetting Your Appetite](appetite.md)
+ - [开门篇](appetite.md)
  - [使用Python解释器](interpreter.md)
  - [关于Python的一个非正式介绍](introduction.md)
  - [更多控制流的工具](controlflow.md)//没有翻译
