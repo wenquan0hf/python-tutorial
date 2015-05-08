@@ -100,7 +100,7 @@ spam and eggs
 eggs and spam  
 ```
 
-如果在` format()` 调用时使用关键字参数，可以通过参数名来引用值
+如果在`str.format()` 调用时使用关键字参数，可以通过参数名来引用值
 
 ```
 >>> print('This {food} is {adjective}.'.format(  
