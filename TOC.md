@@ -1,5 +1,5 @@
 - Python 指南
- - [开门篇](appetite.md)
+ - [开山篇](appetite.md)
  - [使用Python解释器](interpreter.md)
  - [非正式的 Python 简介](introduction.md)
  - [更多控制流的工具](controlflow.md)
