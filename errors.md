@@ -1,22 +1,21 @@
-### 8. 错误和异常
+#　错误和异常
 
 至今为止还没有进一步的谈论过错误信息，不过在你已经试验过的那些例子中，可能已经遇到过一些。Python 中（至少）有两种错误：语法错误和异常（ syntax errors 和 exceptions ）。
 
-## 8.1. 语法错误
+## 语法错误
 
-语法错误，也被称作解析错误，也许是你学习 Python 过程中最常见抱怨:
+语法错误，也被称作解析错误，也许是你学习 Python 过程中最常见抱怨：
 
 ```
 >>> while True print('Hello world')   
  File "<stdin>", line 1, in ?     
  while True print('Hello world')                     ^
 SyntaxError: invalid syntax  
-
 ```
 
 语法分析器指出错误行，并且在检测到错误的位置前面显示一个小“箭头”。 错误是由箭头 前面 的标记引起的（或者至少是这么检测的）： 这个例子中，函数 print() 被发现存在错误，因为它前面少了一个冒号（':' ）。 错误会输出文件名和行号，所以如果是从脚本输入的你就知道去哪里检查错误了。 
 
-## 8.2. 异常
+## 异常
 
 即使一条语句或表达式在语法上是正确的，当试图执行它时也可能会引发错误。 运行期检测到的错误称为 异常 ，并且程序不会无条件的崩溃：很快，你将学到如何在 Python 程序中处理它们。 然而，大多数异常都不会被程序处理，像这里展示的一样最终会产生一个错误信息:
 
@@ -42,9 +41,7 @@ TypeError: Can't convert 'int' object to str implicitly
 
 错误信息的前半部分以堆栈的形式列出异常发生的位置。通常在堆栈中列出了源代码行，然而，来自标准输入的源码不会显示出来。
 
-[bltin-exceptions](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) 列出了内置异常和它们的含义。
-
-## 8.3. 控制异常
+## 控制异常
 
 可以编写程序来控制已知的异常。参见下例，此示例要求用户输入信息，一直到 得到一个有效的整数为止，而且允许用户中断程序（使用 Control-C 或 其它什么操作系统支持的操作）；需要注意的是用户生成的中断会抛出 KeyboardInterrupt 异常
 
@@ -55,7 +52,7 @@ TypeError: Can't convert 'int' object to str implicitly
 ...         Break   
 ...     Except ValueError:  
 ...         print("Oops!  That was no valid number.  Try again...")  
-...
+
 
 ```
 
@@ -73,10 +70,10 @@ try 语句按如下方式工作。
 ...   pass  
 
 ```
+
 最后一个 except 子句可以省略异常名称，以作为通配符使用。 你需要慎用此法，因为它会轻易隐藏一个实际的程序错误！ 可以使用这种方法打印一条错误信息，然后重新抛出异常（允许调用者处理这个异常):
 
 ```
-
 Import systry:  
 f = open('myfile.txt')  
 S = f.readline()  
@@ -88,13 +85,11 @@ Except ValueError:
 except:   
      print("Unexpected error:", sys.exc_info()[0])  
      raise  
-
 ```
 
 `try ... except` 语句可以带有一个 else 子句 ，该子句只能出现在所有 except 子句之后。当 try 语句没有抛出异常时，需要执行一些代码，可以使用这个子句。例如:
 
 ```
-
 For arg in sys.argv[1:]:  
 try:  
     F = open(arg, 'r')  
@@ -103,7 +98,6 @@ Except IOError:
 else:  
    print(arg, 'has', len(f.readlines()), 'lines')  
    f.close()  
-
 ```
 
 使用 else 子句比在 try 子句中附加代码要好，因为这样可以避免 `try... except` 意外的截获本来不属于它们保护的那些代码抛出的异常。
@@ -113,7 +107,6 @@ else:
 在异常名（列表）之后，也可以为 except 子句指定一个变量。这个变量绑定于一个异常实例，它存储在 instance.args 的参数中。为了方便起见，异常实例定义了` __str__()` ，这样就可以直接访问过打印参数而不必引用 .args 。 这种做法不受鼓励。相反，更好的做法是给异常传递一个参数（如果要传递多个参数，可以传递一个元组），把它绑定到 message 属性。一旦异常发生，它会在抛出前绑定所有指定的属性。
 
 ```
-
 >>> try:  
 ...     Raise Exception('spam', 'eggs')  
 ... except Exception as inst:  
@@ -129,7 +122,6 @@ else:
 ('spam', 'eggs')  
 ('spam', 'eggs')  
 x = spamy = eggs  
-
 ```
 
 对于那些未处理的异常，如果一个它们带有参数，那么就会被作为异常信息的最后部分（“详情”）打印出来。
@@ -137,7 +129,6 @@ x = spamy = eggs
 异常处理器不仅仅处理那些在 try 子句中立刻发生的异常，也会处理那些 try 子句中调用的函数内部发生的异常。 例如:
 
 ```
-
 >>> def this_fails():  
 ...      X = 1/0  
 ...>>> try:  
@@ -146,20 +137,17 @@ x = spamy = eggs
 ...    print('Handling run-time error:', err)  
 ...  
 Handling run-time error: int division or modulo by zero  
-
 ```
 
-## 8.4. 抛出异常
+## 抛出异常
 
 raise 语句允许程序员强制抛出一个指定的异常。例如:
 
 ```
-
 >>> raise NameError('HiThere')    
 Traceback (most recent call last):    
 File "<stdin>", line 1, in ?  
 NameError: HiThere  
-
 ```
 
 要抛出的异常由 raise 的唯一参数标识。它必需是一个异常实例或异常类（继承自 Exception 的类）。
@@ -167,7 +155,6 @@ NameError: HiThere
 如果你需要明确一个异常是否抛出，但不想处理它， raise 语句可以让你很简单的重新抛出该异常:
 
 ```
-
 >>> try:  
 ...      Raise NameError('HiThere')  
 ... Except NameError:  
@@ -178,15 +165,13 @@ An exception flew by!
 Traceback (most recent call last):   
 File "<stdin>", line 2, in ?  
 NameError: HiThere  
-
 ```
 
-## 8.5. 用户自定义异常
+## 用户自定义异常
 
-在程序中可以通过创建新的异常类型来命名自己的异常（Python 类的内容请参见 类 ）。异常类通常应该直接或间接的从 Exception 类派生，例如:
+在程序中可以通过创建新的异常类型来命名自己的异常（Python 类的内容请参见类 ）。异常类通常应该直接或间接的从 Exception 类派生，例如:
 
 ```
-
 >>> class MyError(Exception):  
 ...     Def __init__(self, value):  
 ...        Self.value = value  
@@ -202,7 +187,6 @@ My exception occurred, value: 4
 Traceback (most recent call last):   
 File "<stdin>", line 1, in ?  
 __main__.MyError: 'oops!'  
-
 ```
 
 在这个例子中，Exception 默认的 `__init__()` 被覆盖。新的方式简单的创建 value 属性。这就替换了原来创建 args 属性的方式。
@@ -210,7 +194,6 @@ __main__.MyError: 'oops!'
 异常类中可以定义任何其它类中可以定义的东西，但是通常为了保持简单，只在其中加入几个属性信息，以供异常处理句柄提取。如果一个新创建的模块中需要抛出几种不同的错误时，一个通常的作法是为该模块定义一个异常基类，然后针对不同的错误类型派生出对应的异常子类:
 
 ```
-
 Class Error(Exception):   
 """Base class for exceptions in this module."""  
 pass  
@@ -232,19 +215,17 @@ Def __init__(self, previous, next, message):
     self.previous = previous  
     Self.next = next  
     Self.message = message  
-
 ```
 
 与标准异常相似，大多数异常的命名都以 “Error” 结尾。
 
-很多标准模块中都定义了自己的异常，用以报告在他们所定义的函数中可能发生的错误。关于类的进一步信息请参见[类](https://docs.python.org/3/tutorial/classes.html#tut-classes)
+很多标准模块中都定义了自己的异常，用以报告在他们所定义的函数中可能发生的错误。
 
-## 8.6. 定义清理行为
+## 定义清理行为
 
 try 语句还有另一个可选的子句，目的在于定义在任何情况下都一定要执行的功能。例如:
 
 ```
-
 >>> try:   
 ...      raise KeyboardInterrupt  
 ... finally:  
@@ -252,13 +233,11 @@ try 语句还有另一个可选的子句，目的在于定义在任何情况下
 ...  
 Goodbye, world!  
 KeyboardInterrupt  
-
 ```
 
 不管有没有发生异常， finally 子句 在程序离开 try 后都一定会被执行。当 try 语句中发生了未被 except 捕获的异常（或者它发生在except 或 else 子句中），在 finally 子句执行完后它会被重新抛出。try 语句经由 break ，continue 或 return 语句退 出也一样会执行finally 子句。以下是一个更复杂些的例子
 
 ```
-
 >>> def divide(x, y):  
 ...     try:  
 ...       Result = x / y  
@@ -281,46 +260,29 @@ Traceback (most recent call last):
 File "<stdin>", line 1, in ?    
 File "<stdin>", line 3, in divide  
 TypeError: unsupported operand type(s) for /: 'str' and 'str'
-
 ```
 
 如你所见， finally 子句在任何情况下都会执 行。 TypeError 在两个字符串相除的时候抛出，未被 except 子句捕获，因此在 finally 子句执行完毕后重新抛出。
 
 在真实场景的应用程序中， finally 子句用于释放外部资源（文件 或网络连接之类的），无论它们的使用过程中是否出错。
 
-## 8.7. 预定义清理行为
+## 预定义清理行为
 
 有些对象定义了标准的清理行为，无论对象操作是否成功，不再需要该对象的时 候就会起作用。以下示例尝试打开文件并把内容打印到屏幕上。
 
 ```
 For line in open("myfile.txt"):  
 print(line, end="")  
-
 ```
 
 这段代码的问题在于在代码执行完后没有立即关闭打开的文件。这在简单的脚本 里没什么，但是大型应用程序就会出问题。 with 语句使得文件之类的对象可以 确保总能及时准确地进行清理。
 
 ```
-
 With open("myfile.txt") as f:  
    for line in f:  
       print(line, end="")  
-
 ```
 
 语句执行后，文件 f 总会被关闭，即使是在处理文件中的数据时出错也一样。 其它对象是否提供了预定义的清理行为要查看它们的文档。
 
-
-
-
-
-
-
-
-
->
-撰写时请删除此段
-
-原文地址：  
-https://docs.python.org/3/tutorial/errors.html
 
