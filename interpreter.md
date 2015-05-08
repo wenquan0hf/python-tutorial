@@ -18,7 +18,7 @@ Set path=%path%;C:\python34
 
 输入一个文件结束符（Unix 上是 Ctrl+D，Windows 上是 Ctrl+Z）解释器会以 0 值退出。如果这样没有起作用，你可以输入以下命令来退出：quit()。  
 
-解释器的命令行编辑功能通常并不复杂。 装在 Unix 上的解释器可能会有 GNU readline 库的支持，  这样就能够得到更加精巧的交互编辑和历史记录特性。检查命令行编辑特性是否支持的最快方式是在 Python 解释器的第一个提示符后输入 Ctrol-P。如果有嘟嘟声，说明你可以使用命令后编辑功能，参阅附录[Interactive Input Editing ang History Substitution](https://docs.python.org/3/tutorial/interactive.html#tut-interacting)获得更多关于此的信息。如果任何事情也没有发生或者只是出现一个 ^p 字符，说明命令行编辑功能不可用，你只有用退格键来删除输入的命令。  
+解释器的命令行编辑功能通常并不复杂。 装在 Unix 上的解释器可能会有 GNU readline 库的支持，  这样就能够得到更加精巧的交互编辑和历史记录特性。检查命令行编辑特性是否支持的最快方式是在 Python 解释器的第一个提示符后输入 Ctrol-P。如果有嘟嘟声，说明你可以使用命令后编辑功能，参阅附录[Interactive Input Editing ang History Substitution](interactive.md)获得更多关于此的信息。如果任何事情也没有发生或者只是出现一个 ^p 字符，说明命令行编辑功能不可用，你只有用退格键来删除输入的命令。  
 
 解释器工作起来和 Unix 的 Shell 类似：使用终端设备作为标准输入来调用她时，解释器交互的解读和执行命令，通过文件名参数或以文件作为标准输入设备时，它从文件中解读并执行脚本。 
 
