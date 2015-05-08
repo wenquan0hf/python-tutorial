@@ -17,7 +17,7 @@ https://docs.python.org/3/tutorial/index.html
 
  [The Python Standard Library](https://docs.python.org/3/library/index.html#library-index) 给出了一个更正式的语言定义。
 
-## Pyhton 参考API
+## Pyhton 参考 API
 
  [Python/C API Reference Manual](https://docs.python.org/3/c-api/index.html#c-api-index)
 
