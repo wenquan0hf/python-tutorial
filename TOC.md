@@ -1,6 +1,6 @@
 - Python 指南
  - [开山篇](appetite.md)
- - [使用Python解释器](interpreter.md)
+ - [使用 Python 解释器](interpreter.md)
  - [非正式的 Python 简介](introduction.md)
  - [深入流程控制](controlflow.md)
  - [数据结构](datastructures.md)
