@@ -1,95 +1,98 @@
 # 深入流程控制
 
-除了前面介绍的 while 语句，Python 还从其它语言借鉴了一些流 程控制功能，并有所改变。
+除了前面介绍的`while`语句，Python 还从其它语言借鉴了一些流 程控制功能，并有所改变。
 
 ## if 語句
 
 也许最有名的语句类型是 if 语句。例如
 
 ```
->>> x = int(input("Please enter an integer: "))  
-Please enter an integer: 42  
- >>> if  x  <  0:    
- ...      X = 0  
-...       print('Negative changed to zero')  
-..  elif  x== 0:  
-...      print('Zero')  
-...  Elif x == 1:  
-...      print('Single')  
-... else:  
-...    print('More')  
-...  
-More  
+>>> x = int(input("Please enter an integer: "))
+Please enter an integer: 42
+>>> if x < 0:
+...     x = 0
+...     print('Negative changed to zero')
+... elif x == 0:
+...     print('Zero')
+... elif x == 1:
+...     print('Single')
+... else:
+...     print('More')
+...
+More
 ```
 
-可能会有零到多个 elif 部分，else 是可选的。关键字 `“elif”`  是 `“ else if ”` 的缩写，这个可以有效避免过深的缩进。`if ... elif ... elif ... `序列用于替代其它语言中的 switch 或 case 语句。
+可能会有零到多个`elif`部分，`else` 是可选的。关键字 `'elif'`  是 `'else if'` 的缩写，这个可以有效避免过深的缩进。`if ... elif ... elif ... `序列用于替代其它语言中的`switch`或`case` 语句。
 
 ## for 语句
 
-Python 中的 for 语句和 C 或 Pascal 中的略有不同。通常的循环可能会依据 一个等差数值步进过程（如 Pascal），或由用户来定义迭代步骤和中止条件（如 C ），Python 的 for 语句依据任意序列（链表或字符串）中的子项，按它们在序 列中的顺序来进行迭代。例如（没有暗指）： 
+Python 中的`for`语句和 C 或 Pascal 中的略有不同。通常的循环可能会依据 一个等差数值步进过程（如 Pascal），或由用户来定义迭代步骤和中止条件（如 C ），Python 的 for 语句依据任意序列（链表或字符串）中的子项，按它们在序 列中的顺序来进行迭代。例如（没有暗指）： 
 
 ```
->>> # Measure some strings:  
-... words=['cat', 'window', 'defenestrate']  
->>> for w in words:  
-...      print(w, len(w))  
-...  
-cat 3  
-window 6  
-defenestrate 12  
+>>> # Measure some strings:
+... words = ['cat', 'window', 'defenestrate']
+>>> for w in words:
+...     print(w, len(w))
+...
+cat 3
+window 6
+defenestrate 12
 ```
 
 在迭代过程中修改迭代序列不安全（只有在使用链表这样的可变序列时才会有这 样的情况）。如果你想要修改你迭代的序列（例如，复制选择项），你可以迭代 它的复本。使用切割标识就可以很方便的做到这一点
 
 ```
->>> for w in words[:]:# Loop over a slice copy of the entire list  
-....      if len(w) > 6:  
-...          words.insert(0,w)  
-...  
->>> words  
-['defenestrate', 'cat', 'window', 'defenestrate']  
+>>> for w in words[:]:  # Loop over a slice copy of the entire list.
+...     if len(w) > 6:
+...         words.insert(0, w)
+...
+>>> words
+['defenestrate', 'cat', 'window', 'defenestrate']
 ```
 
 ## range() 函数
 
-如果你需要一个数值序列，内置函数 range() 会很方便，它生成一个等差级 数链表：
+如果你需要一个数值序列，内置函数`range()`会很方便，它生成一个等差级 数链表：
 
 ```
->>> for i in range(5):  
-...     print(i)  
-...  
-0  
-1  
-2  
-3 
-4  
+>>> for i in range(5):
+...     print(i)
+...
+0
+1
+2
+3
+4 
 ```
 
 `range(10)` 生成了一个包含 10 个值的链表，它用链表的索引值填充了这个长度为 10 的列表，所生成的链表中不包括范围中的结束值。也可以让range 操作从另一 个数值开始，或者可以指定一个不同的步进值（甚至是负数，有时这也被称为 “步长”） 
 
 ```
-range(5, 10)  
-   5 through 9  
-range(0, 10, 3) 
-   0, 3, 6, 9  
-range(-10, -100, -30)  
-  -10, -40, -70  
+range(5, 10)
+   5 through 9
+
+range(0, 10, 3)
+   0, 3, 6, 9
+
+range(-10, -100, -30)
+  -10, -40, -70 
 ```
 
-需要迭代链表索引的话，如下所示结合使 用 `range() `和 `len()`
+需要迭代链表索引的话，如下所示结合使 用`range()`和`len()`
 
 ```
->>> a = ['Mary', 'had', 'a', 'little', 'lamb']  
->>> for i in range(len(a)):  
-...     print(i, a[i])  
-...  
-0 Mary  
-2 a  
-3 little  
-4 lamb  
+>>> a = ['Mary', 'had', 'a', 'little', 'lamb']
+>>> for i in range(len(a)):
+...     print(i, a[i])
+...
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
 ```
 
-然而，这种场合可以方便的使用` enumerate()` ，请参见 [Looping Techniques]() 循环技巧 。
+然而，这种场合可以方便的使用`enumerate()`，请参见`Looping Techniques`循环技巧 。
 
 如果你只是打印一个序列的话会发生奇怪的事情：
 
@@ -98,9 +101,9 @@ range(-10, -100, -30)
 range(0, 10)
 ```
 
-在不同方面 `range()` 函数返回的对象表现为它是一个列表，但事实上它并不是。 当你迭代它时，它是一个能够像期望的序列返回连续项的对象；但为了节省空间，它并不真正构造列表。
+在不同方面`range()`函数返回的对象表现为它是一个列表，但事实上它并不是。 当你迭代它时，它是一个能够像期望的序列返回连续项的对象；但为了节省空间，它并不真正构造列表。
 
-我们称此类对象是 可迭代的 ，即适合作为那些期望从某些东西中获得连续项直到结束的函数或结构的一个目标（参数）。 我们已经见过的 for 语句就是这样一个 迭代器 。 list() 函数是另外一个（ 迭代器），它从可迭代（对象）中创建列表：
+我们称此类对象是可迭代的，即适合作为那些期望从某些东西中获得连续项直到结束的函数或结构的一个目标（参数）。 我们已经见过的 `for`语句就是这样一个 迭代器 。`list()`函数是另外一个（迭代器），它从可迭代（对象）中创建列表：
 
 ```
 >>> list(range(5))
@@ -111,72 +114,74 @@ range(0, 10)
 
 ## break 语句和 continue 语句, 以及循环中的 else 子句
 
-break 语句和 C 中的类似，用于跳出最近的一级 for 或 while 循环。
+`break`语句和 C 中的类似，用于跳出最近的一级`for`或`while`循环。
 
-循环可以有一个 else 子句；它在循环迭代完整个列表（对于 for ）或执行条件为 false （对于 while ）时执行，但循环被 break 中止的情况下不会执行。以下搜索素数的示例程序演示了这个子句：
-
-```
->>> for n in range(2, 10):  
-...     For x in range(2, n):  
-...        If n % x == 0:  
-...            print(n, 'equals', x, *', n//x)  
-...            Break  
-...    else:  
-...         # loop fell through without finding a factor  
-...          print(n, 'is a prime number')  
-...  
-2 is a prime number  
-3 is a prime number  
-4 equals 2 * 2  
-5 is a prime number  
-6 equals 2 * 3  
-7 is a prime number  
-8 equals 2 * 4  
-9 equals 3 * 3  
-```
-
-(Yes, 这是正确的代码。看仔细: else 语句是属于 for 循环之中, 不是if 语句.)  
-当循环使用，else子句有更多的共同点与try语句的else子句比它如果语句是：a try语句的else子句时，没有发生异常运行，一个循环的else子句时，没有发生中断运行。欲了解更多关于try语句和异常，请处理异常。  
-continue 语句是从 C 中借鉴来的，它表示循环继续执行下一次迭代：
+循环可以有一个`else`子句；它在循环迭代完整个列表（对于`for`）或执行条件为`false` （对于`while`）时执行，但循环被`break`中止的情况下不会执行。以下搜索素数的示例程序演示了这个子句：
 
 ```
->>> for num in range(2, 10):  
-...       if num % 2 == 0:  
-...           print("Found an even number", num)  
-...           Continue  
-...      print("Found a number", num)  
-Found an even number 2Found a number 3  
-Found an even number 4  
-Found a number 5  
-Found an even number 6  
-Found a number 7  
-Found an even number 8  
+>>> for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print(n, 'equals', x, '*', n//x)
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print(n, 'is a prime number')
+...
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+```
+
+(Yes, 这是正确的代码。看仔细:`else`语句是属于`for`循环之中, 不是`if`语句.)  
+当循环使用，`else`子句有更多的共同点与try语句的else子句比它如果语句是：a `try`语句的`else`子句时，没有发生异常运行，一个循环的`else`子句时，没有发生中断运行。欲了解更多关于`try`语句和异常，请处理异常。  
+`continue`语句是从 C 中借鉴来的，它表示循环继续执行下一次迭代：
+
+```
+>>> for num in range(2, 10):
+...     if num % 2 == 0:
+...         print("Found an even number", num)
+...         continue
+...     print("Found a number", num)
+Found an even number 2
+Found a number 3
+Found an even number 4
+Found a number 5
+Found an even number 6
+Found a number 7
+Found an even number 8
+Found a number 9
 ```
 
 ## pass 语句
 
-pass语句什么也不做。它用于那些语法上必须要有什么语句，但程序什么也不做的场合，例如：
+`pass`语句什么也不做。它用于那些语法上必须要有什么语句，但程序什么也不做的场合，例如：
 
 ```
->>> while True:  
-...     Pass # Busy-wait for keyboard interrupt (Ctrl+C)  
-...  
+>>> while True:
+...     pass  # Busy-wait for keyboard interrupt (Ctrl+C)
+...
 ```
 
 这通常用于创建最小结构的类
 
 ```
->>> class MyEmptyClass:  
-... pass  
-...  
+>>> class MyEmptyClass:
+...     pass
+...
 ```
 
-另一方面， pass 可以在创建新代码时用来做函数或控制体的占位符。可以让你在更抽象的级别上思考。 pass 可以默默的被忽视： 
+另一方面，`pass`可以在创建新代码时用来做函数或控制体的占位符。可以让你在更抽象的级别上思考。`pass`可以默默的被忽视： 
 
 ```
->>> def initlog(*args):  
-...      Pass  # Remember to implement this!  
-...  
+>>> def initlog(*args):
+...     pass   # Remember to implement this!
+... 
 ```
 
 ## 定义函数
@@ -184,60 +189,65 @@ pass语句什么也不做。它用于那些语法上必须要有什么语句，�
 我们可以定义一个函数以生成任意上界的菲波那契数列
 
 ```
->>> def fib(n): # write Fibonacci series up to n  
-...    """Print a Fibonacci series up to n."""  
-...   a, b = 0, 1  
-...     While a < n:  
-...         print(a, end=' ')  
-...         a, b = b, a+b  
-...     print()  
-...  
->>> # Now call the function we just defined  
-:... fib(2000)  
+>>> def fib(n):    # write Fibonacci series up to n
+...     """Print a Fibonacci series up to n."""
+...     a, b = 0, 1
+...     while a < n:
+...         print(a, end=' ')
+...         a, b = b, a+b
+...     print()
+...
+>>> # Now call the function we just defined:
+... fib(2000)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
 ```
 
-关键字 def 引入了一个函数 定义 。在其后必须跟有函数名和包 括形式参数的圆括号。函数体语句从一行开始，必须是缩进的。  
-函数体的第一行可以是一个字符串值，这个字符串是该函数的文档字符串 ，或称 docstring 。（更进步的文档字符串介绍可以在这一节找Documentation Strings() 文档字符串 。）有些工具使用文 档字符串在线的生成及打印文档，或者允许用户在代码中交互式的浏览；编写代 码进加入文档字符串是个好的风格，应该养成习惯。  
-执行 函数时会为局部变量引入一个新的符号表。所有的局部变量都存储在这 个局部符号表中。引用参数时，会先从局部符号表中查找，然后是全局符号表，然 后是内置命名表。因此，全局参数虽然可被引用，但它们不能在函数中直接 赋值（除非它们用 global 语句名）。  
-函数引用的实际参数在函数调用时引入局部符号表，因此，实参总是 传值调用 （这里的 值 总是一个对象引用 ，而不是该对象的值）2一个函数被另一个函 数调用时，一个新的局部符号表在调用过程中被创建。  
-函数定义在当前符号表中引入函数名。作为用户定义函数，函数名有一个为解释 器认可的类型值。这个值可以赋给其它命名，使其能够作为一个函数来使用。这 就像一个重命名机制 
+关键字`def`引入了一个函数 定义 。在其后必须跟有函数名和包 括形式参数的圆括号。函数体语句从一行开始，必须是缩进的。 
+
+函数体的第一行可以是一个字符串值，这个字符串是该函数的文档字符串 ，或称 docstring 。（更进步的文档字符串介绍可以在这一节找`Documentation Strings()` 文档字符串 。）有些工具使用文 档字符串在线的生成及打印文档，或者允许用户在代码中交互式的浏览；编写代 码进加入文档字符串是个好的风格，应该养成习惯。 
+
+执行函数时会为局部变量引入一个新的符号表。所有的局部变量都存储在这个局部符号表中。引用参数时，会先从局部符号表中查找，然后是全局符号表，然后是内置命名表。因此，全局参数虽然可被引用，但它们不能在函数中直接 赋值（除非它们用 global 语句名）。
+
+函数引用的实际参数在函数调用时引入局部符号表，因此，实参总是传值调用（这里的值总是一个对象引用，而不是该对象的值）[1](#footroot1)一个函数被另一个函数调用时，一个新的局部符号表在调用过程中被创建。 
+
+函数定义在当前符号表中引入函数名。作为用户定义函数，函数名有一个为解释器认可的类型值。这个值可以赋给其它命名，使其能够作为一个函数来使用。这 就像一个重命名机制 
 
 ```
->>> fib  
-<function fib at 10042ed0>  
->>> f = fib  
->>> f(100)  
-0 1 1 2 3 5 8 13 21 34 55 89 
+>>> fib
+<function fib at 10042ed0>
+>>> f = fib
+>>> f(100)
+0 1 1 2 3 5 8 13 21 34 55 89
 ```
 
 你可能认为 fib 没有返回值，它不是一个函数（ function ），而是一个 过程（ procedure ）。实际上，即使函数没有 return 语句，它也 有返回值，虽然是一个不讨人喜欢的。这个值被称为 None （这是一个内置命 名）。如果一个值只是 None 的话，通常解释器不会写出来，如果你真想要查看 它的话，可以这样做
 
 ```
->>> fib(0)  
->>> print(fib(0))  
-None  
+>>> fib(0)
+>>> print(fib(0))
+None
 ```
 
 定义一个返回斐波那契数列数字列表的函数，而不是打印它，是很简单的：
 
 ```
->>> def fib2(n): # return Fibonacci series up to n  
-...    """Return a list containing the Fibonacci series up to n."""  
-...     Result = [ ]  
-...     a, b = 0, 1  
-...     While a < n:  
-...         result.append(a)  # see below  
-...         a, b = b, a+b  
-...     Return result  
-...>>> f100 = fib2(100)   # call it  
->>> f100                # write the result  
-[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]  
+>>> def fib2(n): # return Fibonacci series up to n
+...     """Return a list containing the Fibonacci series up to n."""
+...     result = []
+...     a, b = 0, 1
+...     while a < n:
+...         result.append(a)    # see below
+...         a, b = b, a+b
+...     return result
+...
+>>> f100 = fib2(100)    # call it
+>>> f100                # write the result
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 ```
 
 和以前一样，这个例子演示了一些新的 Python 功能：
-return 语句从函数中返回一个值，不带表达式的 return 返回 None。过程结束后也会返回 None 。    
-语句 `result.append(b)` 称为链表对象 result 的一个 方法 （ method ）。方法是一个“属于”某个对象的函数，它被命名为 obj.methodename，这里的 obj 是某个对象（可能是一个表达式）， methodename 是某个在该对象类型定义中的方法的命名。不同的类型定义不同的方法。不同类型可能有同样名字的方法，但不会混淆。（当你定义自己的对象类型和方法时，可能会出现这种情况， class 的定义方法详见 类 ）。示例中演示的 append() 方法由链表对象定义，它向链表中加入一个新元素。在示例中它等同于 `result = result + [b]` ，不过效率更高。  
+return 语句从函数中返回一个值，不带表达式的`return`返回`None`。过程结束后也会返回`None`。    
+语句`result.append(b)`称为链表对象`result` 的一个方法。方法是一个“属于”某个对象的函数，它被命名为 `obj.methodename`，这里的`obj`是某个对象（可能是一个表达式），`methodename`是某个在该对象类型定义中的方法的命名。不同的类型定义不同的方法。不同类型可能有同样名字的方法，但不会混淆。（当你定义自己的对象类型和方法时，可能会出现这种情况，`class`的定义方法详见类）。示例中演示的`append()`方法由链表对象定义，它向链表中加入一个新元素。在示例中它等同于`result = result + [b]`，不过效率更高。  
 
 ## 深入函数定义
 
@@ -248,34 +258,36 @@ return 语句从函数中返回一个值，不带表达式的 return 返回 N
 最常用的一种形式是为一个或多个参数指定默认值。 这会创建一个可以使用比定义时允许的参数更少的参数调用的函数，例如：
 
 ```
-Def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):  
-While True:  
-    Ok = input(prompt)  
-    If ok in ('y', 'ye', 'yes'):  
-         return True  
-    if ok in ('n', 'no', 'nop', 'nope'):  
-         return False   
-    retries = retries - 1   
-    If retries < 0:    
-         Raise OSError('uncooperative user')  
-   print(complaint)  
+def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+    while True:
+        ok = input(prompt)
+        if ok in ('y', 'ye', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nop', 'nope'):
+            return False
+        retries = retries - 1
+        if retries < 0:
+            raise OSError('uncooperative user')
+        print(complaint)
 ```
 
 这个函数可以通过几种不同的方式调用：
-只给出必要的参数: `ask_ok('Do you really want to quit?')`  
-给出一个可选的参数: `ask_ok('OK to overwrite the file?', 2)`  
-或者给出所有的参数 
+只给出必要的参数：`ask_ok('Do you really want to quit?')`  
+给出一个可选的参数：`ask_ok('OK to overwrite the file?', 2)`  
+或者给出所有的参数：`ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')`
+
+
+这个例子还介绍了`in`关键字。它测定序列中是否包含某个确定的值。  
+默认值在函数定义作用域被解析，如下所示：
 
 ```
-    ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')
-```
+i = 5
 
-这个例子还介绍了 in 关键字。它测定序列中是否包含某个确定的值。  
-默认值在函数 定义 作用域被解析，如下所示：
+def f(arg=i):
+    print(arg)
 
-```
-I = 5def f(arg=i):  
-    print(arg)i = 6f() 
+i = 6
+f()
 ```
  
 将会输出 5 。  
@@ -283,140 +295,135 @@ I = 5def f(arg=i):
 **重要警告**：默认值只被赋值一次。这使得当默认值是可变对象时会有所不同，比如列表、字典或者大多数类的实例。例如，下面的函数在后续调用过程中会累积（前面）传给它的参数:
 
 ```
-Def f(a, L=[ ])  
-   L.append(a)  
-   return Lprint(f(1))  
-print(f(2))  
-print(f(3))  
+def f(a, L=[]):
+    L.append(a)
+    return L
+
+print(f(1))
+print(f(2))
+print(f(3))
 ```
 
 这将输出：
 
 ```
-[1]  
-[1, 2]  
-[1, 2, 3]  
+[1]
+[1, 2]
+[1, 2, 3]
 ```
 
 如果你不想让默认值在后续调用中累积，你可以像下面一样定义函数： 
 
 ```
-Def f(a, L=None):  
-If L is None:  
-     L = [ ]  
-L.append(a)  
-Return L  
+def f(a, L=None):
+    if L is None:
+        L = []
+    L.append(a)
+    return L
 ```
 
 ### 关键字参数
 
-函数可以通过关键字参数 keyword argument 的形式来调用，形如 `keyword = value `。例如，以下的函数：
+函数可以通过关键字参数 keyword argument 的形式来调用，形如` kwarg=value`。例如，以下的函数：
 
 ```
-Def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):  
-print("-- This parrot wouldn't", action, end=' ')  
-print("if you put", voltage, "volts through it.")  
-print("-- Lovely plumage, the", type)  
-print("-- It's", state, "!")  
+def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
+    print("-- This parrot wouldn't", action, end=' ')
+    print("if you put", voltage, "volts through it.")
+    print("-- Lovely plumage, the", type)
+    print("-- It's", state, "!")
 ```
 
-接受一个必选参数 (voltage) 以及三个可选参数 (state, action, 和type). 可以用以下的任一方法调用：
+接受一个必选参数 (`voltage`) 以及三个可选参数 (`state`,`action`, 和`type`) 可以用以下的任一方法调用：
 
 ```
-parrot(1000)                                 # 1 positional   
-argument  
-parrot(voltage=1000)                            # 1 keyword   
-argument                            
-parrot(voltage=1000000, action='VOOOOOM')   # 2 keyword   
-arguments  
-parrot(action='VOOOOOM', voltage=1000000)   # 2 keyword   
-arguments
-parrot('a million', 'bereft of life', 'jump')           # 3 positional   
-      arguments  
-parrot('a thousand', state='pushing up the daisies') # 1 positional,1       
-  keyword  
+parrot(1000)                                          # 1 positional argument
+parrot(voltage=1000)                                  # 1 keyword argument
+parrot(voltage=1000000, action='VOOOOOM')             # 2 keyword arguments
+parrot(action='VOOOOOM', voltage=1000000)             # 2 keyword arguments
+parrot('a million', 'bereft of life', 'jump')         # 3 positional arguments
+parrot('a thousand', state='pushing up the daisies')  # 1 positional, 1 keyword
 ```
 
 不过以下几种调用是无效的：
 
 ```
-parrot()                        # required argument missing    
-parrot(voltage=5.0, 'dead')     # non-keyword argument after a   
-keyword argument    
-parrot(110, voltage=220)      # duplicate value for the same     
-argument    
-parrot(actor='John Cleese')    # unknown keyword argument    
+parrot()                     # required argument missing
+parrot(voltage=5.0, 'dead')  # non-keyword argument after a keyword argument
+parrot(110, voltage=220)     # duplicate value for the same argument
+parrot(actor='John Cleese')  # unknown keyword argument  
 ```
 
-通常，参数列表必须（先书写）位置参数然后才是关键字参数，这里关键字必须来自于形参名字。 形参是否有一个默认值并不重要。 任何参数都不能被多次赋值——在同一个调用中，与位置参数相同的形参名字不能用作关键字。 这里有一个违反此限制而出错的例子：
+通常，参数列表必须先书写位置参数然后才是关键字参数，这里关键字必须来自于形参。 形参是否有一个默认值并不重要。 任何参数都不能被多次赋值——在同一个调用中，与位置参数相同的形参名字不能用作关键字。 这里有一个违反此限制而出错的例子：
 
 ```
->>> def function(a):  
-...     Pass  
-...>>> function(0, a=0)  
-Traceback (most recent call last):      
-File "<stdin>", line 1, in ?  
-TypeError: function() got multiple values for keyword argument 'a'  
+>>> def function(a):
+...     pass
+...
+>>> function(0, a=0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+TypeError: function() got multiple values for keyword argument 'a'
 ```
 
-引入一个形如` **name `的参数时，它接收一个字典，该字典包含了所有未出现在形式参数列表中的关键字参数。这里可能还会组合使用一个形如 `*name` （下一小节詳細介绍） 的形 式参数，它接收一个元组（下一节中会详细介绍），包含了所有没有出现在形式 参数列表中的参数值（`*name` 必须在 `**name` 之前出现） 例如，我们这样定 义一个函数
+引入一个形如`**name`的参数时，它接收一个字典，该字典包含了所有未出现在形式参数列表中的关键字参数。这里可能还会组合使用一个形如 `*name` （下一小节詳細介绍） 的形 式参数，它接收一个元组（下一节中会详细介绍），包含了所有没有出现在形式 参数列表中的参数值（`*name` 必须在 `**name` 之前出现）例如，我们这样定义一个函数
 
 ```
-Def cheeseshop(kind, *arguments, **keywords):  
-print("-- Do you have any", kind,"?")  
-print("-- I'm sorry, we're all out of", kind)  
-for arg in arguments:  
-    print(arg)  
-print("-" * 40)  
-Keys = sorted(keywords.keys())  
-For kw in keys:  
-    print(kw, ":", keywords[kw])  
+def cheeseshop(kind, *arguments, **keywords):
+    print("-- Do you have any", kind, "?")
+    print("-- I'm sorry, we're all out of", kind)
+    for arg in arguments:
+        print(arg)
+    print("-" * 40)
+    keys = sorted(keywords.keys())
+    for kw in keys:
+        print(kw, ":", keywords[kw])
 ````
 
 它可以像这样调用：
 
 ```
-cheeseshop("Limburger", "It's very runny, sir.",  
-            "It's really very, VERY runny, sir.",  
-             shopkeeper="Michael Palin",  
-             client="John Cleese",  
-             sketch="Cheese Shop Sketch")  
+cheeseshop("Limburger", "It's very runny, sir.",
+           "It's really very, VERY runny, sir.",
+           shopkeeper="Michael Palin",
+           client="John Cleese",
+           sketch="Cheese Shop Sketch")
 ```
 
 当然它会按如下内容打印：
 
 ```
--- Do you have any Limburger ?  
--- I'm sorry, we're all out of Limburger  
-It's very runny, sir.  
-It's really very, VERY runny, sir.----------------------------------------
- 
-client : John Cleese  
-shopkeeper : Michael Palin  
-sketch : Cheese Shop Sketch  
+-- Do you have any Limburger ?
+-- I'm sorry, we're all out of Limburger
+It's very runny, sir.
+It's really very, VERY runny, sir.
+----------------------------------------
+client : John Cleese
+shopkeeper : Michael Palin
+sketch : Cheese Shop Sketch
 ```
 
-注意在打印 关键字 参数字典的内容前先调用 sort() 方法。否则的话，打印参数时的顺序是未定义的。
+注意在打印关键字参数字典的内容前先调用`sort()`方法。否则的话，打印参数时的顺序是未定义的。
 
 ### 可变参数列表
 
-最后，一个最不常用的选择是可以让函数调用可变个数的参数。这些参数被包装进一个元组（参见 元组和序列 ）。在这些可变个数的参数之前，可以有零到多个普通的参数。
+最后，一个最不常用的选择是可以让函数调用可变个数的参数。这些参数被包装进一个元组（参见元组和序列）。在这些可变个数的参数之前，可以有零到多个普通的参数。
 
 ```
-Def write_multiple_items(file, separator, *args):  
-       file.write(separator.join(args))  
+def write_multiple_items(file, separator, *args):
+    file.write(separator.join(args))
 ```
 
-通常，这些 可变 参数是参数列表中的最后一个， 因为它们将把所有的剩余输入参数传递给函数。任何出现在` *args `后的参数是关键字参数，这意味着，他们只能被用作关键字，而不是位置参数。
+通常，这些 可变 参数是参数列表中的最后一个， 因为它们将把所有的剩余输入参数传递给函数。任何出现在`*args`后的参数是关键字参数，这意味着，他们只能被用作关键字，而不是位置参数。
 
 ```
->>> def concat(*args, sep="/"):  
-...       Return sep.join(args)  
-...   
->>> concat("earth", "mars", "venus")  
-'earth/mars/venus'   
->>> concat("earth", "mars", "venus", sep=".")  
-'earth.mars.venus'  
+>>> def concat(*args, sep="/"):
+...    return sep.join(args)
+...
+>>> concat("earth", "mars", "venus")
+'earth/mars/venus'
+>>> concat("earth", "mars", "venus", sep=".")
+'earth.mars.venus'
 ```
 
 
@@ -425,25 +432,24 @@ Def write_multiple_items(file, separator, *args):
 另有一种相反的情况: 当你要传递的参数已经是一个列表，但要调用的函数却接受分开一个个的参数值。这时候你要把已有的列表拆开来. 例如内建函数 range() 需要要独立的 start , stop 参数. 你可以在调用函数时加一个`* `操作符来自动把参数列表拆开：
 
 ```
->>> list(range(3, 6))            # normal call with separate   
-arguments    
-[3, 4, 5]>>> args = [3, 6]  
->>> list(range(*args))           # call with arguments unpacked from   
-a list[3, 4, 5]  
+>>> list(range(3, 6))            # normal call with separate arguments
+[3, 4, 5]
+>>> args = [3, 6]
+>>> list(range(*args))            # call with arguments unpacked from a list
+[3, 4, 5]
 ```
 
 以同样的方式，可以使用` **` 操作符分拆关键字参数为字典：
 
 ```
->>> def  parrot(voltage, state='a stiff', action='voom'):  
-...        print("-- This parrot wouldn't", action, end=' ')  
-...        print("if you put", voltage, "volts through it.", end=' ')  
-...         print("E's", state, "!")
-...  
->>> d = {"voltage": "four million","state": "bleedin' demised", "action": "VOOM"}     
->>> parrot(**d)  
--- This parrot wouldn't VOOM if you put four million volts through it.   
-E's bleedin' demised !  
+>>> def parrot(voltage, state='a stiff', action='voom'):
+...     print("-- This parrot wouldn't", action, end=' ')
+...     print("if you put", voltage, "volts through it.", end=' ')
+...     print("E's", state, "!")
+...
+>>> d = {"voltage": "four million", "state": "bleedin' demised", "action": "VOOM"}
+>>> parrot(**d)
+-- This parrot wouldn't VOOM if you put four million volts through it. E's bleedin' demised !
 ```
 
 ### Lambda 形式
@@ -451,22 +457,23 @@ E's bleedin' demised !
 出于实际需要，有几种通常在函数式编程语言例如 Lisp 中出现的功能加入到了 Python 。通过 lambda 关键字，可以创建短小的匿名函数。这里有一个函数返回它的两个参数的和： `lambda a`,` b: a+b` 。 Lambda 形式可以用于任何需要的函数对象。出于语法限制，它们只能有一个单独的表达式。语义上讲，它们只是普通函数定义中的一个语法技巧。类似于嵌套函数定义，lambda 形式可以从外部作用域引用变量：
 
 ```
->>> def make_incrementor(n):  
-...        return lambda x: x + n  
-...  
->>> f = make_incrementor(42)  
->>> f(0)  
-42  
->>> f(1)  
+>>> def make_incrementor(n):
+...     return lambda x: x + n
+...
+>>> f = make_incrementor(42)
+>>> f(0)
+42
+>>> f(1)
+43
 ```
 
 上面的示例使用一个 lambda 表达式返回一个函数。另一个用途是通过一个小函数作为一个参数：
 
 ```
->>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]  
->>> pairs.sort(key=lambda pair: pair[1])  
->>> pairs  
-[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]  
+>>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
+>>> pairs.sort(key=lambda pair: pair[1])
+>>> pairs
+[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
 ```
 
 
@@ -483,14 +490,17 @@ Python 的解释器不会从多行的文档字符串中去除缩进，所以必�
 以下是一个多行文档字符串的示例:
 
 ```
->>> def my_function():  
-...     """Do nothing, but document it  
-.......     No, really, it doesn't do anything  
-....     """...   Pass  
-...  
->>> print(my_function.__doc__)    
-Do nothing, but document it.     
-No, really, it doesn't do anything.  
+>>> def my_function():
+...     """Do nothing, but document it.
+...
+...     No, really, it doesn't do anything.
+...     """
+...     pass
+...
+>>> print(my_function.__doc__)
+Do nothing, but document it.
+
+    No, really, it doesn't do anything.
 ```
 
 ### 函数注释
@@ -499,20 +509,23 @@ No, really, it doesn't do anything.
 注释存储在函数的`__annotations__`属性字典,不会影响其他功能的一部分。参数注释是由冒号后的参数名称,后跟一个注释的值的表达式。文字`- >`返回注释定义,其次是一个表达式,参数列表和结肠之间表示 def 语句的结束。下面的例子有一个位置参数,一个关键字参数,返回值注释和废话：
 
 ```
->>> def f(ham: 42, eggs: int = 'spam') -> "Nothing to see here":  
-...     print("Annotations:", f.__annotations__)  
-...      print("Arguments:", ham, eggs)  
-...  
->>> f('wonderful')  
-Annotations: {'eggs': <class 'int'>, 'return': 'Nothing to see here', 'ham': 42}  
-Arguments: wonderful spam  
+>>> def f(ham: str, eggs: str = 'eggs') -> str:
+...     print("Annotations:", f.__annotations__)
+...     print("Arguments:", ham, eggs)
+...     return ham + ' and ' + eggs
+...
+>>> f('spam')
+Annotations: {'ham': <class 'str'>, 'return': <class 'str'>, 'eggs': <class 'str'>}
+Arguments: spam eggs
+'spam and eggs'
 ```
 
 ## 插曲：编码风格
 
 此时你已经可以写一此更长更复杂的 Python 程序，是时候讨论一下 编码风格 了。大多数语言可以写（或者更明白的说， 格式化 ）作几种不 同的风格。有些比其它的更好读。让你的代码对别人更易读是个好想法，养成良 好的编码风格对此很有帮助。
 
-对于 Python， PEP 8 引入了大多数项目遵循的风格指导。它给出了一个高 度可读，视觉友好的编码风格。每个 Python 开发者都应该读一下，大多数要点 都会对你有帮助：  
+对于 Python， PEP 8 引入了大多数项目遵循的风格指导。它给出了一个高 度可读，视觉友好的编码风格。每个 Python 开发者都应该读一下，大多数要点 都会对你有帮助： 
+
 - 用 4 空格缩进，而非 TAB。  
 在小缩进（可以嵌套更深）和大缩进（更易读）之间，4空格是一个很好的折中。TAB 引发了一些混乱，最好弃用。  
 - 折行以确保其不会超过 79 个字符。  
@@ -520,11 +533,12 @@ Arguments: wonderful spam
 - 使用空行分隔函数和类，以及函数中的大块代码。  
 - 可能的话，注释独占一行  
 - 使用文档字符串  
-- 把空格放到操作符两边，以及逗号后面，但是括号里侧不加空格：` a = f(1, 2) + g(3, 4)` 。统一函数和类命名。  
+- 把空格放到操作符两边，以及逗号后面，但是括号里侧不加空格：`a = f(1, 2) + g(3, 4)` 。统一函数和类命名。  
 - 推荐类名用 驼峰命名， 函数和方法名用 小写_和_下划线。总是用 self 作为方法的第一个参数。  
 - 不要使用花哨的编码，如果你的代码的目的是要在国际化 环境。 Python 的默认情况下，UTF-8，甚至普通的 ASCII 总是工作的最好。  
 - 同样，也不要使用非 ASCII 字符的标识符，除非是不同语种的会阅读或者维护代码。 
  
 **脚注**   
 
+<a name="footnote1"></a>
 [1]实际上， 引用对象调用 描述的更为准确。如果传入一个可变对像，调用者会看到调用操作带来的任何变化（如子项插入到列表中）。  
