@@ -6,7 +6,7 @@
 
 - [The Python Standard Library](https://docs.python.org/3/library/index.html#library-index): 应该浏览一下这份文档，它为标准库中的类型、函数和模块提供了完整（尽管很简略）的参考资料。标准的 Python 发布版包括了 大量 的附加模块。其中有针对读取 Unix 邮箱、接收 HTTP 文档、生成随机数、解析命令行选项、写 CGI 程序、压缩数据以及很多其它任务的模块。略读一下库参考会给你很多解决问题的思路。 
 - [Installing Python Modules](https://docs.python.org/3/installing/index.html#installing-index)展示了如何安装其他 Python 用户编写的附加模块。
-- [The Python Language Reference](https://docs.python.org/3/reference/index.html#reference-index): 詳細说明了 Python 语法和语义。它读起来很累，不过对于语言本身，有份完整的手册很有用。  
+- [The Python Language Reference](http://wiki.jikexueyuan.com/project/python-language-reference): 詳細说明了 Python 语法和语义。它读起来很累，不过对于语言本身，有份完整的手册很有用。  
 
 其它 Python 资源：
 
