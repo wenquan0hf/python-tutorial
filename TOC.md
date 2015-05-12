@@ -1,4 +1,4 @@
--Python 入门指南
+- Python 入门指南
  - [激起你的兴趣](appetite.md)
  - [使用 Python 解释器](interpreter.md)
  - [非正式的 Python 简介](introduction.md)
